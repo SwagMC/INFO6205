@@ -21,6 +21,8 @@ public class RandomWalk {
      */
     private void move(int dx, int dy) {
         // TO BE IMPLEMENTED ...
+        this.x += dx;
+        this.y += dy;
         // ... END IMPLEMENTATION
     }
 
@@ -31,6 +33,9 @@ public class RandomWalk {
      */
     private void randomWalk(int m) {
         // TO BE IMPLEMENTED ...
+        for (int i = 0; i < m; i++) {
+            randomMove();
+        }
         // ... END IMPLEMENTATION
     }
 
@@ -51,7 +56,7 @@ public class RandomWalk {
      */
     public double distance() {
         // TO BE IMPLEMENTED ...
-        return 0;
+        return Math.sqrt(x * x + y * y);
         // ... END IMPLEMENTATION
     }
 
@@ -80,6 +85,13 @@ public class RandomWalk {
         if (args.length > 1) n = Integer.parseInt(args[1]);
         double meanDistance = randomWalkMulti(m, n);
         System.out.println(m + " steps: " + meanDistance + " over " + n + " experiments");
+
+        int n2 = 1000;
+        int[] mList = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500};
+        for (int m2: mList) {
+            meanDistance = randomWalkMulti(m2, n2);
+            System.out.println(m2 + " steps: " + meanDistance + " over " + n2 + " experiments");
+        }
     }
 
 }
